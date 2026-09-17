@@ -1,0 +1,6 @@
+$out_root/
+{
+  include libcrails-payment/
+}
+
+export $out_root/libcrails-payment/$import.target

@@ -1,0 +1,21 @@
+#pragma once
+
+#if defined(LIBCRAILS_PAYMENT_STATIC)
+# define LIBCRAILS_PAYMENT_SYMEXPORT
+#elif defined(LIBCRAILS_PAYMENT_STATIC_BUILD)
+# define LIBCRAILS_PAYMENT_SYMEXPORT
+#elif defined(LIBCRAILS_PAYMENT_SHARED)
+# ifdef _WIN32
+#  define LIBCRAILS_PAYMENT_SYMEXPORT __declspec(dllimport)
+# else
+#  define LIBCRAILS_PAYMENT_SYMEXPORT
+# endif
+#elif defined(LIBCRAILS_PAYMENT_SHARED_BUILD)
+# ifdef _WIN32
+#  define LIBCRAILS_PAYMENT_SYMEXPORT __declspec(dllexport)
+# else
+#  define LIBCRAILS_PAYMENT_SYMEXPORT
+# endif
+#else
+# define LIBCRAILS_PAYMENT_SYMEXPORT
+#endif

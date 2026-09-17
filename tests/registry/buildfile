@@ -1,0 +1,3 @@
+import libs = libcrails-payment%lib{crails-payment}
+
+exe{driver}: {hxx cxx}{**} $libs

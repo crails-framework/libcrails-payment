@@ -1,0 +1,7 @@
+project = libcrails-payment
+
+using version
+using config
+using test
+using install
+using dist
