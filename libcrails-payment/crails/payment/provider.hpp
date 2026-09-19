@@ -28,7 +28,7 @@ namespace Crails
       Provider(std::string name) : provider_name(std::move(name)) {}
       virtual ~Provider() {}
 
-      const std::string& name() const { return provider_name; }
+      std::string_view   name() const { return std::string_view(provider_name); }
 
       virtual Customer      create_customer(const CustomerParams&) const = 0;
       virtual void          create_customer_async(const CustomerParams&, Result<Customer>) const noexcept = 0;

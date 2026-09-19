@@ -3,6 +3,7 @@
 #include <crails/utils/backtrace.hpp>
 #include <crails/datatree.hpp>
 #include <string>
+#include <string_view>
 
 namespace Crails
 {
@@ -11,15 +12,15 @@ namespace Crails
     class LIBCRAILS_PAYMENT_SYMEXPORT Error : public boost_ext::runtime_error
     {
     public:
-      Error(std::string provider, const std::string& message) :
+      Error(std::string_view provider, const std::string& message) :
         boost_ext::runtime_error(message), provider_name(std::move(provider))
       {
       }
 
-      const std::string& provider() const { return provider_name; }
+      std::string_view provider() const { return provider_name; }
 
     private:
-      std::string provider_name;
+      std::string_view provider_name;
     };
 
     class LIBCRAILS_PAYMENT_SYMEXPORT CurrencyMismatch : public Error
@@ -31,13 +32,13 @@ namespace Crails
     class LIBCRAILS_PAYMENT_SYMEXPORT RequestError : public Error
     {
     public:
-      RequestError(const std::string& provider, std::string code, const std::string& message, Data raw) :
+      RequestError(std::string_view provider, std::string code, const std::string& message, Data raw) :
         Error(provider, message), error_code(std::move(code))
       {
         raw_response.as_data().merge(raw);
       }
 
-      RequestError(const std::string& provider, std::string code, const std::string& message) :
+      RequestError(std::string_view provider, std::string code, const std::string& message) :
         Error(provider, message), error_code(std::move(code))
       {
       }

@@ -1,10 +1,10 @@
 #pragma once
-# include "export.hpp"
-# include "provider.hpp"
-# include <crails/utils/singleton.hpp>
-# include <map>
-# include <memory>
-# include <string>
+#include "export.hpp"
+#include "provider.hpp"
+#include <crails/utils/singleton.hpp>
+#include <map>
+#include <memory>
+#include <string_view>
 
 namespace Crails
 {
@@ -16,14 +16,15 @@ namespace Crails
     public:
       virtual ~Registry() {}
 
-      static std::shared_ptr<const Provider> find(const std::string& name);
-      static const Provider&                 get(const std::string& name);
+      static std::shared_ptr<const Provider> find(std::string_view name);
+      static const Provider&                 get(std::string_view name);
+      static std::vector<std::string_view>   list();
 
     protected:
       void add(std::shared_ptr<const Provider> provider);
 
     private:
-      std::map<std::string, std::shared_ptr<const Provider>> providers;
+      std::map<std::string_view, std::shared_ptr<const Provider>> providers;
     };
   }
 }
