@@ -28,7 +28,7 @@ namespace Crails
 
         start([this, self, on_success, on_error](const T& result, std::exception_ptr error)
         {
-          SUPER::context.protect([result, error, on_success, on_error]()
+          SUPER::context->protect([result, error, on_success, on_error]()
           {
             if (error)
             {
