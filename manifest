@@ -10,4 +10,4 @@ email: michael@unetresgrossebite.com
 #build-error-email: michael@unetresgrossebite.com
 depends: * build2 >= 0.18.0
 depends: * bpkg >= 0.18.0
-depends: { libcrails libcrails-logger libcrails-controllers libcrails-http-client libcrails-encrypt libbacktrace } ^2.0.0
+depends: { libcrails libcrails-logger libcrails-semantics libcrails-controllers libcrails-http-client libcrails-encrypt libbacktrace } ^2.0.0
