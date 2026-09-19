@@ -52,6 +52,7 @@ namespace Crails
       virtual void          fetch_mandate_async(const std::string& mandate_id, Result<Mandate>) const noexcept;
 
       virtual WebhookEvent  verify_webhook(std::string_view body, const boost::beast::http::fields& headers) const = 0;
+      virtual void          verify_webhook_async(std::string body, boost::beast::http::fields headers, Result<WebhookEvent> callback) const noexcept;
 
     protected:
       [[noreturn]] void throw_unsupported(const std::string& operation) const;
