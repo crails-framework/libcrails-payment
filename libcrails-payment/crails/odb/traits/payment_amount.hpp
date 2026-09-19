@@ -3,7 +3,6 @@
 #include <crails/odb/backends.hpp>
 #define CRAILS_ODB_ID_STRING id_string
 
-#include "backends.hpp"
 #ifdef CRAILS_ODB_WITH_PGSQL
 # include <odb/pgsql/traits.hxx>
 # define TRAITS_INCLUDE_SQL_BACKEND pgsql
@@ -32,7 +31,3 @@
 #endif
 
 #undef CRAILS_ODB_ID_STRING
-
-#endif
-
-
