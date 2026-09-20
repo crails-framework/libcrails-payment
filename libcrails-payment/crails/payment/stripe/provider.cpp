@@ -499,7 +499,7 @@ WebhookEvent Stripe::Provider::verify_webhook(string_view body, const boost::bea
     throw AuthenticationError(name(), "no webhook secret configured for this provider");
   if (it == headers.end())
     throw AuthenticationError(name(), "missing Stripe-Signature header");
-  signature_header = it->value();
+  signature_header = string(it->value());
   if (!verify_webhook_signature(body, signature_header, webhook_secret))
     throw AuthenticationError(name(), "invalid Stripe webhook signature");
   json.from_json(string(body));

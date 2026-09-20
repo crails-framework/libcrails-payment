@@ -65,9 +65,9 @@ struct TestParser : public Crails::RequestParser
 // minimal stand-in is all SUPER needs to be for this test.
 struct MinimalController : public std::enable_shared_from_this<MinimalController>
 {
-  Crails::Context& context;
+  std::shared_ptr<Crails::Context> context;
 
-  MinimalController(Crails::Context& c) : context(c) {}
+  MinimalController(Crails::Context& c) : context(c.shared_from_this()) {}
   virtual ~MinimalController() {}
 };
 
